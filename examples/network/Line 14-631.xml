@@ -136,7 +136,7 @@
                         <RoutePoint version="any" id="KRI:RoutePoint:1">
                             <projections>
                                 <PointProjection version="any" id="KRI:PointProjection:1">
-                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:761115225"/>
+                                    <ProjectedPointRef version="any" ref="NSR:StopArea:761115225"/>
                                 </PointProjection>
                             </projections>
                         </RoutePoint>
@@ -144,7 +144,7 @@
                         <RoutePoint version="any" id="KRI:RoutePoint:2">
                             <projections>
                                 <PointProjection version="any" id="KRI:PointProjection:2">
-                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:762115249"/>
+                                    <ProjectedPointRef version="any" ref="NSR:StopArea:762115249"/>
                                 </PointProjection>
                             </projections>
                         </RoutePoint>
@@ -152,7 +152,7 @@
                         <RoutePoint version="any" id="KRI:RoutePoint:3">
                             <projections>
                                 <PointProjection version="any" id="KRI:PointProjection:3">
-                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:762115242"/>
+                                    <ProjectedPointRef version="any" ref="NSR:StopArea:762115242"/>
                                 </PointProjection>
                             </projections>
                         </RoutePoint>
@@ -160,7 +160,7 @@
                         <RoutePoint version="any" id="KRI:RoutePoint:4">
                             <projections>
                                 <PointProjection version="any" id="KRI:PointProjection:4">
-                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:762054306"/>
+                                    <ProjectedPointRef version="any" ref="NSR:StopArea:762054306"/>
                                 </PointProjection>
                             </projections>
                         </RoutePoint>
@@ -168,7 +168,7 @@
                         <RoutePoint version="any" id="KRI:RoutePoint:5">
                             <projections>
                                 <PointProjection version="any" id="KRI:PointProjection:5">
-                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:762115228"/>
+                                    <ProjectedPointRef version="any" ref="NSR:StopArea:762115228"/>
                                 </PointProjection>
                             </projections>
                         </RoutePoint>
@@ -176,7 +176,7 @@
                         <RoutePoint version="any" id="KRI:RoutePoint:6">
                             <projections>
                                 <PointProjection version="any" id="KRI:PointProjection:6">
-                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:762115244"/>
+                                    <ProjectedPointRef version="any" ref="NSR:StopArea:762115244"/>
                                 </PointProjection>
                             </projections>
                         </RoutePoint>
