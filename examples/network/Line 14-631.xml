@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Jeg har forsøkt å modellere noen av turene som finnes i denne tabellen:
+    http://tabeller.reiseinfo.no/Data/Route?tripId=18226599
+-->
+<PublicationDelivery 
+  version="1.0" 
+  xmlns="http://www.netex.org.uk/netex" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/NeTEx_publication.xsd">
+    <PublicationTimestamp>2016-05-20T15:03:03Z</PublicationTimestamp>
+    <ParticipantRef>KRI</ParticipantRef>
+    <!-- Description er frivillig -->
+    <Description>Kringom linje 14-631: Florø-Veiesund-Askrova-Stavang-Svanøy</Description>
+
+
+    <dataObjects>
+        <!-- =========================================== -->
+        <CompositeFrame version="any" created="2015-09-15T00:00:00Z" id="KRI:Norway:CompositeFrame:0061">
+            <ValidBetween></ValidBetween>
+
+            <codespaces>
+                <!-- Codespace for Kringom -->
+                <Codespace id="kringom">
+                    <Xmlns>KRI</Xmlns>
+                    <XmlnsUrl>http://www.kringom.no/</XmlnsUrl>
+                </Codespace>
+                <!-- Codespace for nasjonalt holdeplassregister -->
+                <Codespace id="nsr">
+                    <Xmlns>NSR</Xmlns>
+                    <XmlnsUrl>http://www.Rutebanken.no/nasjonltstoppestedregister</XmlnsUrl>
+                </Codespace>
+            </codespaces>
+
+            <FrameDefaults>
+                <!-- Alle elementer med id-attributt blir prefixet med dette codespacet (dvs KRI:) -->
+                <DefaultCodespaceRef ref="kringom"/>
+                <DefaultLocale>
+                    <!-- Kan time zone defineres på andre elementer? F.eks. i forbindelse med flyruter -->
+                    <TimeZone>CET</TimeZone>
+                    <SummerTimeZone>CEST</SummerTimeZone>
+                    <!-- Alle tekster er på norsk om ikke eksplisitt spesifisert -->
+                    <DefaultLanguage>no</DefaultLanguage>
+                </DefaultLocale>
+            </FrameDefaults>
+
+            <frames>
+                <!-- =========================================== -->
+                <ResourceFrame version="any" id="KRI:ResourceFrame:RF1">
+                    <organisations>
+                        <Authority version="any" id="KRI:Company:0">
+                            <CompanyNumber></CompanyNumber> <!-- Offentlig, kunne ikke finne noe i Brønnøysund -->
+                            <!-- Organisasjonsnummer -->
+                            <Name>Kringom</Name>
+                            <LegalName>Kringom AS</LegalName>
+                            <!-- Må denne med? <OrganisationType>authority</OrganisationType> -->
+                        </Authority>
+                        <Operator version="any" id="KRI:Company:1">
+                            <CompanyNumber>983472583</CompanyNumber>
+                            <Name>Fjord1</Name>
+                            <LegalName>Fjord1 AS</LegalName>
+                            <ContactDetails>
+                                <Phone>57757000</Phone>
+                                <Url>http://www.fjord1.no/</Url>
+                                <FurtherDetails>Kontaktskjema på websider</FurtherDetails>
+                            </ContactDetails>
+                        </Operator>
+                    </organisations>
+                </ResourceFrame>
+
+
+                <!-- Utvalg av holdeplasser som brukes i denne leveransen. Verifiseres mot nasjonalt holdeplassregister -->
+                <SiteFrame version="any" id="KRI:SiteFrame:SF01">
+                    <stopPlaces>
+                        <!-- Merk at her brukes det codespace NSR som viser at disse elementene eies av NasjonaltHoldeplassRegister. Her har jeg brukt ID-er som svarer til holdeplasser i nåværende database. Alle ID-er etter dette er løpenummer -->
+                        <StopPlace version="any" id="NSR:StopArea:761115225">
+                            <Name>Florø kai</Name>
+                            <quays>
+                                <Quay version="any" id="NSR:StopArea:762054223"/>
+                                <Quay version="any" id="NSR:StopArea:762115226"/>
+                                <Quay version="any" id="NSR:StopArea:762115227"/>
+                                <Quay version="any" id="NSR:StopArea:762054216"/>
+                            </quays>
+                        </StopPlace>
+                        <StopPlace version="any" id="NSR:StopArea:761054312">
+                            <Name>Ålvora kai</Name>
+                            <quays>
+                                <Quay version="any" id="NSR:StopArea:762115249"/>
+                            </quays>
+                        </StopPlace>
+                        <StopPlace version="any" id="NSR:StopArea:761054276">
+                            <Name>Stavang kai</Name>
+                            <quays>
+                                <Quay version="any" id="NSR:StopArea:762115242"/>
+                            </quays>
+                        </StopPlace>
+                        <StopPlace version="any" id="NSR:StopArea:761115512">
+                            <Name>Veiesund kai</Name>
+                            <quays>
+                                <Quay version="any" id="NSR:StopArea:762054305"/>
+                                <Quay version="any" id="NSR:StopArea:762054306"/>
+                            </quays>
+                        </StopPlace>
+                        <StopPlace version="any" id="NSR:StopArea:761054345">
+                            <Name>Askrova</Name>
+                            <quays>
+                                <Quay version="any" id="NSR:StopArea:762115229"/>
+                                <Quay version="any" id="NSR:StopArea:762115228"/>
+                            </quays>
+                        </StopPlace>
+                        <StopPlace version="any" id="NSR:StopArea:761054291">
+                            <Name>Svanøybukt kai</Name>
+                            <quays>
+                                <Quay version="any" id="NSR:StopArea:762115244"/>
+                            </quays>
+                        </StopPlace>
+                    </stopPlaces>
+                </SiteFrame>
+               
+
+
+                <ServiceFrame version="any" id="KRI:ServiceFrame:1">
+                    <!-- Nettverk er bare en gruppering av Lines under en felles "paraply". En Line igjen er en gruppe av ruter under samme markedsføringsnavn, eks rute 2 -->
+                    <Network version="any" changed="2016-09-29T00:00:00Z" id="KRI:GroupOfLine:Fjord1Ferjer">
+                        <Name>Kringom</Name>
+                    </Network>
+                    <directions>
+                        <Direction version="any" id="KRI:Route:0061101:Direction">
+                            <Name>Rundtur</Name>
+                            <DirectionType>clockwise</DirectionType> <!-- Vanskelig å avgjøre her, siden ruten går på kryss og tvers. Kan feltet settes tomt? -->
+                        </Direction>
+                    </directions>
+                    <!-- Gjør et utvalg av Quays som skal brukes videre som routePoints -->
+                    <routePoints>
+                        <!-- Florø kai -->
+                        <RoutePoint version="any" id="KRI:RoutePoint:1">
+                            <projections>
+                                <PointProjection version="any" id="KRI:PointProjection:1">
+                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:761115225"/>
+                                </PointProjection>
+                            </projections>
+                        </RoutePoint>
+                        <!-- Ålvora kai -->
+                        <RoutePoint version="any" id="KRI:RoutePoint:2">
+                            <projections>
+                                <PointProjection version="any" id="KRI:PointProjection:2">
+                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:762115249"/>
+                                </PointProjection>
+                            </projections>
+                        </RoutePoint>
+                        <!-- Stavang kai -->
+                        <RoutePoint version="any" id="KRI:RoutePoint:3">
+                            <projections>
+                                <PointProjection version="any" id="KRI:PointProjection:3">
+                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:762115242"/>
+                                </PointProjection>
+                            </projections>
+                        </RoutePoint>
+                        <!-- Veiesund kai -->
+                        <RoutePoint version="any" id="KRI:RoutePoint:4">
+                            <projections>
+                                <PointProjection version="any" id="KRI:PointProjection:4">
+                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:762054306"/>
+                                </PointProjection>
+                            </projections>
+                        </RoutePoint>
+                        <!-- Askrova -->
+                        <RoutePoint version="any" id="KRI:RoutePoint:5">
+                            <projections>
+                                <PointProjection version="any" id="KRI:PointProjection:5">
+                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:762115228"/>
+                                </PointProjection>
+                            </projections>
+                        </RoutePoint>
+                        <!-- Svanøybukta -->
+                        <RoutePoint version="any" id="KRI:RoutePoint:6">
+                            <projections>
+                                <PointProjection version="any" id="KRI:PointProjection:6">
+                                    <ProjectedPointRef version="any" ref="KRI:StopPoint:762115244"/>
+                                </PointProjection>
+                            </projections>
+                        </RoutePoint>
+                    </routePoints>
+                    
+                    <!-- Bruker routePoints som ble definert i forrige bolk til å sette opp en felles holdeplassrekkefølge for ruten. Dette er venstre kolonne i en eventuell visuell tabell -->
+                    
+                    <routes>
+                        <Route version="any" id="KRI:Route:1">
+                            <Name>Florø-Veiesund-Askrova-Stavang-Svanøy </Name> <!-- Hva blir dette navnet i forhold til line-name? -->
+                            <DirectionRef version="any" ref="KRI:Route:0061101:Direction"/>
+                            <pointsInSequence>
+                                <PointOnRoute version="any" id="KRI:PointOnRoute:1" order="1">
+                                    <RoutePointRef version="any" ref="KRI:RoutePoint:1"/>
+                                </PointOnRoute>
+                                <PointOnRoute version="any" id="KRI:PointOnRoute:2" order="2">
+                                    <RoutePointRef version="any" ref="KRI:RoutePoint:2"/>
+                                </PointOnRoute>
+                                <PointOnRoute version="any" id="KRI:PointOnRoute:3" order="3">
+                                    <RoutePointRef version="any" ref="KRI:RoutePoint:3"/>
+                                </PointOnRoute>
+                                <PointOnRoute version="any" id="KRI:PointOnRoute:4" order="4">
+                                    <RoutePointRef version="any" ref="KRI:RoutePoint:4"/>
+                                </PointOnRoute>
+                                <PointOnRoute version="any" id="KRI:PointOnRoute:5" order="5">
+                                    <RoutePointRef version="any" ref="KRI:RoutePoint:5"/>
+                                </PointOnRoute>
+                                <PointOnRoute version="any" id="KRI:PointOnRoute:6" order="6">
+                                    <RoutePointRef version="any" ref="KRI:RoutePoint:6"/>
+                                </PointOnRoute>
+                                <PointOnRoute version="any" id="KRI:PointOnRoute:7" order="7">
+                                    <RoutePointRef version="any" ref="KRI:RoutePoint:5"/>
+                                </PointOnRoute>
+                                <PointOnRoute version="any" id="KRI:PointOnRoute:8" order="8">
+                                    <RoutePointRef version="any" ref="KRI:RoutePoint:4"/>
+                                </PointOnRoute>
+                                <PointOnRoute version="any" id="KRI:PointOnRoute:9" order="9">
+                                    <RoutePointRef version="any" ref="KRI:RoutePoint:2"/>
+                                </PointOnRoute>
+                                <PointOnRoute version="any" id="KRI:PointOnRoute:10" order="10">
+                                    <RoutePointRef version="any" ref="KRI:RoutePoint:1"/>
+                                </PointOnRoute>
+                            </pointsInSequence>
+                        </Route>
+                    </routes>
+
+                    <lines>
+                        <!-- Kun 1 linje definert; 14-631 -->
+                        <Line version="any" id="KRI:Line:1">
+                            <Name>Florø-Veiesund-Askrova-Stavang-Svanøy</Name>
+                            
+                            <!-- Trenger jeg BÅDE transportmode og transportsubmode her? -->
+                            <TransportMode>
+                                water
+                            </TransportMode>
+                            <TransportSubmode>
+                                <WaterSubmode>localCarFerry</WaterSubmode>
+                            </TransportSubmode>
+                            
+                            <PublicCode>14-631</PublicCode>
+                            <OperatorRef ref="KRI:Company:1"/>
+                            <routes>
+                                <!-- Denne linjen kjøres bare på 1 måte -->
+                                <RouteRef version="any" ref="KRI:Route:1"/>
+                            </routes>
+                        </Line>
+                    </lines>
+
+                    <!-- Sannsynligvis ikke noe destination display her, fjernet taggen
+                    -->
+                    
+                    
+                    <!-- Lister opp alle stop points som brukes i KRIen -->
+                    <scheduledStopPoints>
+                        <ScheduledStopPoint version="any" id="KRI:StopPoint:1">
+                            <Name>Florø kai</Name>
+                        </ScheduledStopPoint>
+                        <ScheduledStopPoint version="any" id="KRI:StopPoint:2">
+                            <Name>Ålvora kai</Name>
+                        </ScheduledStopPoint>
+                        <ScheduledStopPoint version="any" id="KRI:StopPoint:3">
+                            <Name>Stavang kai</Name>
+                        </ScheduledStopPoint>
+                        <ScheduledStopPoint version="any" id="KRI:StopPoint:4">
+                            <Name>Veiesund kai</Name>
+                        </ScheduledStopPoint>
+                        <ScheduledStopPoint version="any" id="KRI:StopPoint:5">
+                            <Name>Askrova kai</Name>
+                        </ScheduledStopPoint>
+                        <ScheduledStopPoint version="any" id="KRI:StopPoint:6">
+                            <Name>Svanøybukt kai</Name>
+                        </ScheduledStopPoint>
+                        <ScheduledStopPoint version="any" id="KRI:StopPoint:7">
+                            <Name>Veiesund kai</Name>
+                        </ScheduledStopPoint>
+                    </scheduledStopPoints>
+
+                    <!-- Kobling fra ScheduledStopPoint til StopPlace/Quay. Legg merke til at StopPlace og Quay hører til i NSR-codespace mens ScheduleStopPoint hører til i KRI-codespacet -->
+                    
+                    <!-- Må endre denne til KRIe 14-631 -->
+                    <stopAssignments>
+                        <!-- Florø kai -->
+                        <PassengerStopAssignment version="any" order="1" id="KRI:PassengerStopAssignment:1">
+                            <ScheduledStopPointRef version="any" ref="KRI:StopPoint:1"/>
+                            <StopPlaceRef version="any" ref="NSR:StopArea:761115225"/>
+                            <QuayRef version="any" ref="NSR:StopArea:762115226"/>
+                        </PassengerStopAssignment>
+                        <!-- Ålvora kai -->
+                        <PassengerStopAssignment version="any" order="2" id="KRI:PassengerStopAssignment:2">
+                            <ScheduledStopPointRef version="any" ref="KRI:StopPoint:2"/>
+                            <StopPlaceRef version="any" ref="NSR:StopArea:761054312"/>
+                            <QuayRef version="any" ref="NSR:StopArea:762115249"/>
+                        </PassengerStopAssignment>
+                        <!-- Stavang kai -->
+                        <PassengerStopAssignment version="any" order="3" id="KRI:PassengerStopAssignment:3">
+                            <ScheduledStopPointRef version="any" ref="KRI:StopPoint:3"/>
+                            <StopPlaceRef version="any" ref="NSR:StopArea:761054276"/>
+                            <QuayRef version="any" ref="NSR:StopArea:762115242"/>
+                        </PassengerStopAssignment>
+                        <!-- Veiesund kai -->
+                        <PassengerStopAssignment version="any" order="4" id="KRI:PassengerStopAssignment:4">
+                            <ScheduledStopPointRef version="any" ref="KRI:StopPoint:4"/>
+                            <StopPlaceRef version="any" ref="NSR:StopArea:761115512"/>
+                            <QuayRef version="any" ref="NSR:StopArea:762054306"/>
+                        </PassengerStopAssignment>
+                        <!-- Askrova kai -->
+                        <PassengerStopAssignment version="any" order="5" id="KRI:PassengerStopAssignment:5">
+                            <ScheduledStopPointRef version="any" ref="KRI:StopPoint:5"/>
+                            <StopPlaceRef version="any" ref="NSR:StopArea:761054345"/>
+                            <QuayRef version="any" ref="NSR:StopArea:762115228"/>
+                        </PassengerStopAssignment>
+                        <!-- Svanøybukt kai -->
+                        <PassengerStopAssignment version="any" order="6" id="KRI:PassengerStopAssignment:6">
+                            <ScheduledStopPointRef version="any" ref="KRI:StopPoint:6"/>
+                            <StopPlaceRef version="any" ref="NSR:StopArea:761054291"/>
+                            <QuayRef version="any" ref="NSR:StopArea:762115244"/>
+                        </PassengerStopAssignment>
+                    </stopAssignments>
+
+                    <!-- Alle unike kjøremønster i denne KRIen -->
+                    <!-- Her bruker jeg order for å sette posisjonene til holdeplassene i en eventuell visuell tabell -->
+                    <journeyPatterns>
+                        
+                        <JourneyPattern version="any" id="KRI:JourneyPattern:1">
+                            <RouteRef version="any" ref="KRI:Route:1"/>
+                            <!-- Rekkefølge på stopp -->
+                            <pointsInSequence>
+                                <!-- Florø kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:1" order="1">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:1"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Veiesund kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:2" order="4">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:4"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Askrova kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:3" order="5">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:5"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Svanøybukt kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:4" order="6">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:6"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Alvora kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:5" order="9">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:2"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Florø kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:6" order="10">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:1"/>
+                                </StopPointInJourneyPattern>
+                            </pointsInSequence>
+                        </JourneyPattern>
+                        
+                        <JourneyPattern version="any" id="KRI:JourneyPattern:2">
+                            <RouteRef version="any" ref="KRI:Route:1"/>
+                            <!-- Rekkefølge på stopp -->
+                            <pointsInSequence>
+                                <!-- Florø kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:7" order="1">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:1"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Ålvora kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:8" order="2">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:2"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Svanøybukt kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:9" order="6">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:6"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Askrova kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:10" order="7">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:5"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Veiesund kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:11" order="8">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:7"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Florø kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:12" order="10">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:1"/>
+                                </StopPointInJourneyPattern>
+                            </pointsInSequence>
+                        </JourneyPattern>
+                        
+                        <JourneyPattern version="any" id="KRI:JourneyPattern:3">
+                            <RouteRef version="any" ref="KRI:Route:1"/>
+                            <!-- Rekkefølge på stopp -->
+                            <pointsInSequence>
+                                <!-- Florø kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:13" order="1">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:1"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Stavang kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:14" order="3">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:3"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Svanøybukt kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:15" order="6">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:6"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Askrova kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:16" order="7">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:5"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Florø kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:17" order="10">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:1"/>
+                                </StopPointInJourneyPattern>
+                            </pointsInSequence>
+                        </JourneyPattern>
+                        
+                        <JourneyPattern version="any" id="KRI:JourneyPattern:4">
+                            <RouteRef version="any" ref="KRI:Route:1"/>
+                            <!-- Rekkefølge på stopp -->
+                            <pointsInSequence>
+                                <!-- Florø kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:18" order="1">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:1"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Ålvora kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:19" order="4">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:4"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Svanøybukt kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:20" order="6">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:6"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Askrova kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:21" order="7">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:5"/>
+                                </StopPointInJourneyPattern>
+                                <!-- Florø kai -->
+                                <StopPointInJourneyPattern version="any" id="KRI:StopPointInJourneyPattern:22" order="10">
+                                    <ScheduledStopPointRef version="any" ref="KRI:StopPoint:1"/>
+                                </StopPointInJourneyPattern>
+                            </pointsInSequence>
+                        </JourneyPattern>
+                        
+                    </journeyPatterns>
+
+                    <notices>
+                        <!-- Fotnoter for ServiceJourneys -->
+                        <Notice version="any" id="KRI:Notice:1">
+                            <Text>M/S Sylvarnes tlf. 906 46 095. Tinga bilplass har fortrinn, andre dersom ledig plass. Sjå Fjord1.no.</Text>
+                        </Notice>
+                        <Notice version="any" id="KRI:Notice:2">
+                            <Text>M/S Fjordglytt tlf. 957 35 777. Tinga bilplass har fortrinn, andre dersom ledig plass. Sjå Fjord1.no.</Text>
+                        </Notice>
+                        <Notice version="any" id="KRI:Notice:3">
+                            <Text>M/S Fjordglytt tlf. 957 35 777. Tinga bilplass har fortrinn, andre dersom ledig plass. Sjå Fjord1.no.Kjører ikke: 12/08/2016-16/12/2016</Text>
+                        </Notice>
+                        
+                        <!-- Fotnoter for TimetabledPassingTime -->
+                        <Notice version="any" id="KRI:Notice:4">
+                            <Text>Mot førehandstinging tlf. 957 35 777 seinast 30 min før avgang frå Florø..</Text>
+                        </Notice>
+                        <Notice version="any" id="KRI:Notice:5">
+                            <Text>Mot førehandstinging tlf. 906 46 095 seinast 30 min før avgang frå Florø.</Text>
+                        </Notice>
+                        
+                    </notices>
+                    
+                    <!-- Må disse defineres i ServiceCalendarFrame for at referansene skal fungere? -->
+                    <!-- Referansene her svarer ikke til faktisk tabell -->
+                    <noticeAssignments>
+                        <!-- Hva brukes order til her? -->
+                        <NoticeAssignment version="any" id="KRI:NoticeAssignment:1" order="1">
+                            <NoticeRef ref="KRI:Notice:1"/>
+                            <NoticedObjectRef ref="KRI:ServiceJourney:1"/>
+                        </NoticeAssignment>
+                        <NoticeAssignment version="any" id="KRI:NoticeAssignment:2" order="1">
+                            <NoticeRef ref="KRI:Notice:2"/>
+                            <NoticedObjectRef ref="KRI:ServiceJourney:2"/>
+                        </NoticeAssignment>
+                        <NoticeAssignment version="any" id="KRI:NoticeAssignment:3" order="1">
+                            <NoticeRef ref="KRI:Notice:2"/>
+                            <NoticedObjectRef ref="KRI:ServiceJourney:3"/>
+                        </NoticeAssignment>
+                        <NoticeAssignment version="any" id="KRI:NoticeAssignment:4" order="1">
+                            <NoticeRef ref="KRI:Notice:3"/>
+                            <NoticedObjectRef ref="KRI:ServiceJourney:4"/>
+                        </NoticeAssignment>
+                        <NoticeAssignment version="any" id="KRI:NoticeAssignment:5" order="1">
+                            <NoticeRef ref="KRI:Notice:2"/>
+                            <NoticedObjectRef ref="KRI:ServiceJourney:5"/>
+                        </NoticeAssignment>
+                        
+                        <!-- Disse går mot en enkelt rutecelle -->
+                        <NoticeAssignment version="any" id="KRI:NoticeAssignment:6" order="1">
+                            <NoticeRef ref="KRI:Notice:1"/>
+                            <NoticedObjectRef ref="KRI:TimetabledPassingTime:3"/>
+                        </NoticeAssignment>
+                        <NoticeAssignment version="any" id="KRI:NoticeAssignment:7" order="1">
+                            <NoticeRef ref="KRI:Notice:1"/>
+                            <NoticedObjectRef ref="KRI:TimetabledPassingTime:12"/>
+                        </NoticeAssignment>
+                    </noticeAssignments>
+                </ServiceFrame>
+               
+
+                <ServiceCalendarFrame version="any" id="KRI:ServiceCalendarFrame:1">                  
+                   
+                    <ServiceCalendar version="any" id="KRI:ServiceCalendar:1">
+                        <!-- Bruker denne til å vise dagkode som typisk vil vises over kolonnen i en tabell -->
+                        <Name>5</Name>
+                        <dayTypes>
+                            <DayType version="any" id="KRI:DayType:1">
+                                <Name>5</Name>
+                                <properties>
+                                    <PropertyOfDay>
+                                        <DaysOfWeek>Friday</DaysOfWeek>
+                                    </PropertyOfDay>
+                                </properties>
+                            </DayType>
+                            <DayType version="any" id="KRI:DayType:2">
+                                <Name>7</Name>
+                                <properties>
+                                    <PropertyOfDay>
+                                        <DaysOfWeek>Sunday</DaysOfWeek>
+                                    </PropertyOfDay>
+                                </properties>
+                            </DayType>
+                            <DayType version="any" id="KRI:DayType:3">
+                                <Name>124</Name>
+                                <properties>
+                                    <PropertyOfDay>
+                                        <DaysOfWeek>Monday Tuesday Thursday</DaysOfWeek>
+                                    </PropertyOfDay>
+                                </properties>
+                            </DayType>
+                            <DayType version="any" id="KRI:DayType:4">
+                                <Name>6</Name>
+                                <properties>
+                                    <PropertyOfDay>
+                                        <DaysOfWeek>Saturday</DaysOfWeek>
+                                    </PropertyOfDay>
+                                </properties>
+                            </DayType>
+                        </dayTypes>
+                    </ServiceCalendar>
+                    
+                    <!-- Usikker på hvordan jeg definerer en unntaksperiode. TimetableFrame har en gyldighetsperiode, mens én ServiceJourney ikke skal kjøre i en periode midt i her -->
+                    
+                </ServiceCalendarFrame>
+
+
+                <!-- Tidtabellen, dvs avgangstider -->
+                <TimetableFrame version="any" id="KRI:TimetableFrame:1">
+                    <validityConditions>
+                        <ValidBetween>
+                            <FromDate>2016-06-20T00:00:00</FromDate>
+                            <ToDate>2016-12-21T00:00:00</ToDate>
+                        </ValidBetween>
+                    </validityConditions>
+                    <!-- Transportmiddel definert i route -->
+                    <vehicleJourneys>
+                        
+                        <!-- Kolonne 1 i tabell -->
+                        <ServiceJourney version="any" id="KRI:ServiceJourney:1">
+                            <!-- Kan jeg velge å referere til en hel servicecalender istedenfor å referere spesifikt til daytypes? -->
+                            <dayTypes>
+                                <!-- Refererer til dagtype 1 som er fredager (dagkode 5) -->
+                                <DayTypeRef version="any" ref="KRI:DayType:1"/>
+                            </dayTypes>
+                            <!-- Hvilket kjøremønster som benyttes med passasjerer ombord -->
+                            <JourneyPatternRef version="any" ref="KRI:JourneyPattern:1"/>
+                            <!-- Hvilken linje det gjelder -->
+                            <LineRef version="any" ref="KRI:Line:1"/>
+                            <passingTimes>
+                                <!-- Regner med det er krav om at alle stop points i gjeldende journey pattern må listes opp? -->
+                                <!-- Regner med at order ikke trengs her, fordi det er definert i JourneyPatterns -->
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:1">
+                                    <!-- Florø kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:1"/>
+                                    <DepartureTime>20:00:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:2">
+                                    <!-- Veiesund kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:2"/>
+                                    <DepartureTime>20:15:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:3">
+                                    <!-- Askrova kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:3"/>
+                                    <DepartureTime>20:35:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:4">
+                                    <!-- Svanøybukt kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:4"/>
+                                    <DepartureTime>20:50:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:5">
+                                    <!-- Ålvora kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:5"/>
+                                    <DepartureTime>21:10:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:6">
+                                    <!-- Florø kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:6"/>
+                                    <DepartureTime>21:30:00</DepartureTime>
+                                </TimetabledPassingTime>
+                            </passingTimes>
+                        </ServiceJourney>
+                        
+                        <!-- Kolonne 2 i tabell -->
+                        <ServiceJourney version="any" id="KRI:ServiceJourney:2">
+                            <dayTypes>
+                                <!-- Refererer til dagtype 2 som er søndager (dagkode 7) -->
+                                <DayTypeRef version="any" ref="KRI:DayType:2"/>
+                            </dayTypes>
+                            <!-- Samme kjøremønster som forrige (noen små endringer i tidene, og annen dagkode) -->
+                            <JourneyPatternRef version="any" ref="KRI:JourneyPattern:1"/>
+                            <!-- Hvilken linje det gjelder -->
+                            <LineRef version="any" ref="KRI:Line:1"/>
+                            <passingTimes>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:7">
+                                    <!-- Florø kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:1"/>
+                                    <DepartureTime>20:00:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:8">
+                                    <!-- Veiesund kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:2"/>
+                                    <DepartureTime>20:15:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:9">
+                                    <!-- Askrova kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:3"/>
+                                    <DepartureTime>20:30:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:10">
+                                    <!-- Svanøybukt kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:4"/>
+                                    <DepartureTime>20:50:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:11">
+                                    <!-- Ålvora kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:5"/>
+                                    <DepartureTime>21:05:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:12">
+                                    <!-- Florø kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:6"/>
+                                    <DepartureTime>21:30:00</DepartureTime>
+                                </TimetabledPassingTime>
+                            </passingTimes>
+                        </ServiceJourney>
+                        
+                        <!-- Kolonne 5 i tabell -->
+                        <ServiceJourney version="any" id="KRI:ServiceJourney:3">
+                            <dayTypes>
+                                <!-- Refererer til dagtype 4 som er lørdager (dagkode 6) -->
+                                <DayTypeRef version="any" ref="KRI:DayType:4"/>
+                            </dayTypes>
+                            <JourneyPatternRef version="any" ref="KRI:JourneyPattern:2"/>
+                            <!-- Hvilken linje det gjelder -->
+                            <LineRef version="any" ref="KRI:Line:1"/>
+                            <passingTimes>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:13">
+                                    <!-- Florø kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:7"/>
+                                    <DepartureTime>07:00:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:14">
+                                    <!-- Ålvora kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:8"/>
+                                    <DepartureTime>07:20:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:15">
+                                    <!-- Svanøybukt kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:9"/>
+                                    <DepartureTime>07:40:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:16">
+                                    <!-- Askrova kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:10"/>
+                                    <DepartureTime>07:55:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:17">
+                                    <!-- Veiesund kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:11"/>
+                                    <DepartureTime>08:10:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:18">
+                                    <!-- Florø kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:12"/>
+                                    <DepartureTime>08:30:00</DepartureTime>
+                                </TimetabledPassingTime>
+                            </passingTimes>
+                        </ServiceJourney>
+                        
+                        <!-- Kolonne 9 i tabell -->
+                        <ServiceJourney version="any" id="KRI:ServiceJourney:4">
+                            <dayTypes>
+                                <!-- Refererer til dagtype 1 som er fredager (dagkode 5) -->
+                                <DayTypeRef version="any" ref="KRI:DayType:1"/>
+                            </dayTypes>
+                            <JourneyPatternRef version="any" ref="KRI:JourneyPattern:3"/>
+                            <!-- Hvilken linje det gjelder -->
+                            <LineRef version="any" ref="KRI:Line:1"/>
+                            <passingTimes>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:19">
+                                    <!-- Florø kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:13"/>
+                                    <DepartureTime>10:00:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:20">
+                                    <!-- Stavang kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:14"/>
+                                    <DepartureTime>10:25:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:21">
+                                    <!-- Svanøybukt kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:15"/>
+                                    <DepartureTime>10:50:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:22">
+                                    <!-- Askrova kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:16"/>
+                                    <DepartureTime>11:05:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:23">
+                                    <!-- Florø kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:17"/>
+                                    <DepartureTime>11:30:00</DepartureTime>
+                                </TimetabledPassingTime>
+                            </passingTimes>
+                        </ServiceJourney>
+                        
+                        <!-- Kolonne 12 i tabell -->
+                        <ServiceJourney version="any" id="KRI:ServiceJourney:5">
+                            <dayTypes>
+                                <!-- Refererer til dagtype 3 som er mandager, tirsdag og torsdag (dagkode 124) -->
+                                <DayTypeRef version="any" ref="KRI:DayType:3"/>
+                            </dayTypes>
+                            <JourneyPatternRef version="any" ref="KRI:JourneyPattern:4"/>
+                            <!-- Hvilken linje det gjelder -->
+                            <LineRef version="any" ref="KRI:Line:1"/>
+                            <passingTimes>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:24">
+                                    <!-- Florø kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:18"/>
+                                    <DepartureTime>20:00:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:25">
+                                    <!-- Veisund kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:19"/>
+                                    <DepartureTime>20:15:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:26">
+                                    <!-- Svanøybukt kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:20"/>
+                                    <DepartureTime>20:30:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:27">
+                                    <!-- Askrova kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:21"/>
+                                    <DepartureTime>20:50:00</DepartureTime>
+                                </TimetabledPassingTime>
+                                <TimetabledPassingTime version="any" id="KRI:TimetabledPassingTime:28">
+                                    <!-- Florø kai -->
+                                    <StopPointInJourneyPatternRef ref="KRI:StopPointInJourneyPattern:22"/>
+                                    <DepartureTime>21:30:00</DepartureTime>
+                                </TimetabledPassingTime>
+                            </passingTimes>
+                        </ServiceJourney>
+                    </vehicleJourneys>
+                </TimetableFrame>
+            </frames>
+        </CompositeFrame>
+    </dataObjects>
+</PublicationDelivery>
