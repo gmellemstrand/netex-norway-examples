@@ -442,25 +442,25 @@
                         <!-- Fotnoter for ServiceJourneys -->
                         <Notice version="any" id="KRI:Notice:1">
                             <Text>M/S Sylvarnes tlf. 906 46 095. Tinga bilplass har fortrinn, andre dersom ledig plass. Sjå Fjord1.no.</Text>
-                            <TyeOfNoticeRef>PRINT</TyeOfNoticeRef>
+                            <TypeOfNoticeRef ref="PRINT"></TypeOfNoticeRef>
                         </Notice>
                         <Notice version="any" id="KRI:Notice:2">
                             <Text>M/S Fjordglytt tlf. 957 35 777. Tinga bilplass har fortrinn, andre dersom ledig plass. Sjå Fjord1.no.</Text>
-                            <TyeOfNoticeRef>PRINT</TyeOfNoticeRef>
+                            <TypeOfNoticeRef ref="PRINT"></TypeOfNoticeRef>
                         </Notice>
                         <Notice version="any" id="KRI:Notice:3">
                             <Text>M/S Fjordglytt tlf. 957 35 777. Tinga bilplass har fortrinn, andre dersom ledig plass. Sjå Fjord1.no.Kjører ikke: 12/08/2016-16/12/2016</Text>
-                            <TyeOfNoticeRef>PRINT</TyeOfNoticeRef>
+                            <TypeOfNoticeRef ref="PRINT"></TypeOfNoticeRef>
                         </Notice>
                         
                         <!-- Fotnoter for TimetabledPassingTime -->
                         <Notice version="any" id="KRI:Notice:4">
                             <Text>Mot førehandstinging tlf. 957 35 777 seinast 30 min før avgang frå Florø..</Text>
-                            <TyeOfNoticeRef>PRINT</TyeOfNoticeRef>
+                            <TypeOfNoticeRef ref="PRINT"></TypeOfNoticeRef>
                         </Notice>
                         <Notice version="any" id="KRI:Notice:5">
                             <Text>Mot førehandstinging tlf. 906 46 095 seinast 30 min før avgang frå Florø.</Text>
-                            <TyeOfNoticeRef>PRINT</TyeOfNoticeRef>
+                            <TypeOfNoticeRef ref="PRINT"></TypeOfNoticeRef>
                         </Notice>
                         
                     </notices>
