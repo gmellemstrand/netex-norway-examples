@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
     Jeg har forsøkt å modellere noen av turene som finnes i denne tabellen:
-    http://tabeller.reiseinfo.no/Data/Route?tripId=18226599
+    http://tabeller.reiseinfo.no/Data/Route?tableName=14-631
 -->
 <PublicationDelivery 
   version="1.0" 
@@ -275,7 +275,7 @@
                     </scheduledStopPoints>
 
                     <!-- Kobling fra ScheduledStopPoint til StopPlace/Quay. Legg merke til at StopPlace og Quay hører til i NSR-codespace mens ScheduleStopPoint hører til i KRI-codespacet -->
-                    
+
                     <!-- Må endre denne til KRIe 14-631 -->
                     <stopAssignments>
                         <!-- Florø kai -->
@@ -516,7 +516,14 @@
                                         <DaysOfWeek>Friday</DaysOfWeek>
                                     </PropertyOfDay>
                                 </properties>
+                                <timebands>
+                                    <Timeband>
+                                        <StartTime></StartTime>
+                                        <EndTime></EndTime>
+                                    </Timeband>
+                                </timebands>
                             </DayType>
+                            
                             <DayType version="any" id="KRI:DayType:2">
                                 <Name>7</Name>
                                 <properties>

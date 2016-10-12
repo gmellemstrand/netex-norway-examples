@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- === Basic Service Calendar datatype example === -->
+<PublicationDelivery
+    version="1.0"
+    xmlns="http://www.netex.org.uk/netex"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:siri="http://www.siri.org.uk/siri"
+    xsi:schemaLocation="http://www.netex.org.uk/netex ../../xsd/NeTEx_publication.xsd">
+    <PublicationTimestamp>2016-06-28T12:00:00.0Z</PublicationTimestamp>
+    <ParticipantRef>NHR</ParticipantRef>
+    <dataObjects>
+        <CompositeFrame version="any" id="RUT:cf:1">
+            <frames>
+                
+                <ServiceCalendarFrame version="any" id="RUT:ServiceCalendarFrame:1">
+                    <ServiceCalendar version="any" id="RUT:ServiceCalendar:1">
+                        <Name>Ruter august - mars</Name>
+                        
+                        <!-- Har lagt inn perioden for hele filsettet her -->
+                        <FromDate>2016-08-07</FromDate>
+                        <ToDate>2017-03-31</ToDate>
+                        
+                        <!-- Definerer døgnskille. Dvs at avganger før 04:00 kjører neste dag. I dette tilfellet blir det likt for hele leveransen. Alternativet kan være å definere dette som en egen DayType og tildele til de aktuelle ServiceJourneys -->
+                        <EarliestTime>04:00:00</EarliestTime>
+                        <DayLength>PT24H</DayLength>
+                    </ServiceCalendar>
+                    
+                    <dayTypes>
+                        <!-- Definerer døgnskille. Trengs egentlig ikke, siden det er definert i ServiceCalendar. -->
+                        <DayType version="any" id="RUT:DayType:earliestTime">
+                            <Name>Ukedager</Name>
+                            <EarliestTime>04:00:00</EarliestTime>
+                            <DayLength>PT24H</DayLength>
+                        </DayType>
+                        
+                        <!-- Definisjoner av ukedager, lørdag og søndager -->
+                        <DayType version="any" id="RUT:DayType:weekdays">
+                            <Name>Ukedager</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <DaysOfWeek>Monday Tuesday Wednesday Thursday Friday</DaysOfWeek>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                        <DayType version="any" id="RUT:DayType:Saturday">
+                            <Name>Lordag</Name>
+                            <properties>
+                                <PropertyOfDay>
+                                    <DaysOfWeek>Saturday</DaysOfWeek>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                        <DayType version="any" id="RUT:DayType:Sunday">
+                            <Name>Sondag</Name>
+                            <EarliestTime>04:00:00</EarliestTime>
+                            <DayLength>PT24H</DayLength>
+                            <properties>
+                                <PropertyOfDay>
+                                    <DaysOfWeek>Sunday</DaysOfWeek>
+                                </PropertyOfDay>
+                            </properties>
+                        </DayType>
+                    </dayTypes>
+                    
+                    <!-- Brukes til RhytmicalJourney. Ikke i dette eksempelet. -->
+                    <timebands>
+                        <Timeband version="any" id="RUT:Timeband:TM15">
+                            <!--Name>15 minutes past the hour</Name-->
+                            <StartTime>00:15:00</StartTime>
+                        </Timeband>
+                    </timebands>
+                    
+                    <!-- Gyldighetsperioder. Har delt opp perioden før og etter jul, siden jeg ikke finner noen mulighet for å definere unntak. -->
+                    <operatingPeriods>
+                        <OperatingPeriod version="any" id="RUT:OperatingPeriode:1">
+                            <FromDate>2016-08-07T00:00:00</FromDate>
+                            <ToDate>2016-12-23T00:00:00</ToDate>
+                        </OperatingPeriod>
+                        <OperatingPeriod version="any" id="RUT:OperatingPeriode:2">
+                            <FromDate>2016-12-24T00:00:00</FromDate>
+                            <ToDate>2016-12-31T09:00:00</ToDate>
+                        </OperatingPeriod>
+                        <OperatingPeriod version="any" id="RUT:OperatingPeriode:3">
+                            <FromDate>2017-01-01T00:00:00</FromDate>
+                            <ToDate>2016-03-31T00:00:00</ToDate>
+                        </OperatingPeriod>
+                    </operatingPeriods>
+                    
+                    <!-- Definere helligdager i form av enkeltdatoer som søndager. -->
+                    <dayTypeAssignments>
+                        <!-- enkeltdato -->
+                        <DayTypeAssignment version="any" order="1" id="RUT:DayTypeAssignment:1">
+                            <Date>2016-05-17</Date>
+                            <DayTypeRef version="any" ref="RUT:DayType:Sunday"/>
+                        </DayTypeAssignment>
+                        <DayTypeAssignment version="any" order="1" id="RUT:DayTypeAssignment:2">
+                            <Date>2016-12-25</Date>
+                            <DayTypeRef version="any" ref="RUT:DayType:Sunday"/>
+                        </DayTypeAssignment>
+                        <DayTypeAssignment version="any" order="1" id="RUT:DayTypeAssignment:3">
+                            <Date>2016-01-01</Date>
+                            <DayTypeRef version="any" ref="RUT:DayType:Sunday"/>
+                        </DayTypeAssignment>
+                    </dayTypeAssignments>
+                </ServiceCalendarFrame>
+                
+                <!-- Dummy Service and Timetable frames (for reference) -->
+                <ServiceFrame version="any" id="RUT:sf:1">
+                    <routes>
+                        <Route version="any" id="RUT:rt:default"/>
+                    </routes>
+                    <lines>
+                        <Line version="any" id="RUT:line:default">
+                            <Name>default</Name>
+                            <routes>
+                                <RouteRef ref="RUT:rt:default"/>
+                            </routes>
+                        </Line>
+                    </lines>
+                    <journeyPatterns>
+                        <JourneyPattern version="any" id="RUT:JourneyPattern:default"/>
+                    </journeyPatterns>
+                </ServiceFrame>
+                
+                <TimetableFrame version="any" id="RUT:tf:1">                       
+                    <vehicleJourneys>
+                        <ServiceJourney version="any" id="RUT:ServiceJourney:default">
+                            <validityConditions>
+                                <AvailabilityCondition version="any" id="RUT:AvailabilityCondition:1">
+                                    <dayTypes>
+                                        <!-- gyldig ukedager -->
+                                        <DayTypeRef ref="RUT:DayType:weekdays"/>
+                                        <!-- Referanse til døgnskille -->
+                                        <DayTypeRef ref="RUT:DayType:earliestTime"/>
+                                    </dayTypes>
+                                    <operatingDays>
+                                        <!-- Referanser til perioder før og etter juleferien. Her får jeg problemer, siden jeg bare kan referere til OperatingDays, og ikke OperatingPeriods (referanse er feil i forholdt til taggen jeg har brukt. -->
+                                        <OperatingDayRef ref="RUT:OperatingPeriode:1"></OperatingDayRef>
+                                        <OperatingDayRef ref="RUT:OperatingPeriode:3"></OperatingDayRef>
+                                    </operatingDays>
+                                </AvailabilityCondition>
+                            </validityConditions>
+                            
+                            <JourneyPatternRef ref="RUT:JourneyPattern:default"/>
+                            <LineRef ref="RUT:line:default"/>
+                            <!-- ...(stops etc)... -->
+                        </ServiceJourney>
+                    </vehicleJourneys>
+                </TimetableFrame>
+            </frames>
+        </CompositeFrame>
+    </dataObjects>
+</PublicationDelivery>
